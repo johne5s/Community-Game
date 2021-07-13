@@ -30,8 +30,11 @@ public class EntityHealthController : MonoBehaviour
   // Reduces the entity's health by the given damage value, sends `OnDeath` message if dead.
   public void TakeDamage(int damage)
   {
-    health -= damage;
-    if(health <= 0)
+    if (health <= 0) return; //player should be dead, do nothing
+
+    health -= damage; //apply the damage
+
+    if(health <= 0) //check if the player has died
     {
       health = 0;
       gameObject.SendMessage("OnDeath");
@@ -43,7 +46,7 @@ public class EntityHealthController : MonoBehaviour
   }
 
 // When respawn is called, the health is set back to startingHealth and OnRespawn message is sent.
-  public void Respawn()
+  private void Respawn()
   {
     health = startingHealth;
     gameObject.SendMessage("OnRespawn");
