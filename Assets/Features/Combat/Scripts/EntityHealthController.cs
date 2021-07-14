@@ -17,7 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityHealthController : MonoBehaviour
+public class EntityHealthController : NetworkBehaviour
 {
   // The value we should set the enemy's health to
   [SerializeField]
